@@ -1,6 +1,7 @@
 Attribute VB_Name = "DBmod"
 Option Explicit
-Public ConnectionString As String   '-- DB정보를 담아주는 String형 변수이다.
+    Public ConnectionString As String   '-- DB정보를 담아주는 String형 변수이다.
+    Public NM_USER As String    '--현재 사용자의 이름을 저장하는 String변수
 
 Public Sub OpenConnection(ByRef adoCon As ADODB.Connection)  '--데이터베이스와 연결을 해주는 프로시저
     Dim StrCon As String    '--DB정보를 받아서 저장하는 String변수 StrCon
@@ -11,7 +12,7 @@ Public Sub OpenConnection(ByRef adoCon As ADODB.Connection)  '--데이터베이스와 �
     ConnectionString = ConnectionString & "Persist Security Info=true;"    'True;
     ConnectionString = ConnectionString & "User ID=sa;"                    '--접속 ID
     ConnectionString = ConnectionString & "Initial Catalog=Grade; "         '--사용할 데이터베이스
-    ConnectionString = ConnectionString & "Data Source=localhost"          '--데이터베이스 주소 (기본값 = localhost)
+    ConnectionString = ConnectionString & "Data Source=192.168.1.13,8080"          '--데이터베이스 주소 (기본값 = localhost)
     
     StrCon = ConnectionString
     
@@ -63,7 +64,10 @@ Public Sub SetRows(Spread As fpSpread, rs As ADODB.Recordset)
     Dim RowCnt As Integer
     Dim ColCnt As Integer
     
+    Spread.MaxRows = 0
+    
     For RowCnt = 0 To rs.RecordCount - 1
+        Spread.MaxRows = RowCnt + 1
         Spread.Row = RowCnt + 1
         For ColCnt = 0 To rs.Fields.count - 1
             Spread.Col = ColCnt + 1

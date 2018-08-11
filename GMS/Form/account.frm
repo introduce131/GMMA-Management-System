@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin VB.Form account 
    BackColor       =   &H00FFFFFF&
-   Caption         =   "GMS : Create Account Service"
+   Caption         =   "GMS : [货肺款 拌沥 积己]"
    ClientHeight    =   8265
    ClientLeft      =   120
    ClientTop       =   465

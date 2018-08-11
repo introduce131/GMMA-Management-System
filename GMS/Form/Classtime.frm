@@ -3,15 +3,12 @@ Object = "{B9411660-10E6-4A53-BE96-7FED334704FA}#7.0#0"; "fpSpru70.ocx"
 Object = "{8E27C92E-1264-101C-8A2F-040224009C02}#7.0#0"; "MSCAL.OCX"
 Begin VB.Form Classtime 
    BackColor       =   &H00FFFFFF&
-   BorderStyle     =   1  '단일 고정
-   Caption         =   "GMS : 학급 일정 및 시간표"
+   Caption         =   "GMS : [학급 일정 및 시간표]"
    ClientHeight    =   10980
-   ClientLeft      =   45
-   ClientTop       =   390
+   ClientLeft      =   120
+   ClientTop       =   465
    ClientWidth     =   19710
    LinkTopic       =   "Form2"
-   MaxButton       =   0   'False
-   MinButton       =   0   'False
    ScaleHeight     =   10980
    ScaleWidth      =   19710
    StartUpPosition =   2  '화면 가운데
@@ -116,14 +113,14 @@ Begin VB.Form Classtime
       SpreadDesigner  =   "Classtime.frx":0000
    End
    Begin FPUSpreadADO.fpSpread Basicspread 
-      Height          =   3320
+      Height          =   3315
       Left            =   16245
       TabIndex        =   0
       Top             =   390
       Width           =   3135
       _Version        =   458752
       _ExtentX        =   5530
-      _ExtentY        =   5856
+      _ExtentY        =   5847
       _StockProps     =   64
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "맑은 고딕"
@@ -137,7 +134,7 @@ Begin VB.Form Classtime
       MaxCols         =   2
       MaxRows         =   10
       ScrollBars      =   0
-      SpreadDesigner  =   "Classtime.frx":044D
+      SpreadDesigner  =   "Classtime.frx":0425
    End
    Begin VB.Frame Frame1 
       BackColor       =   &H00FFFFFF&

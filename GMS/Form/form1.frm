@@ -29,14 +29,14 @@ Begin VB.Form form1
       Top             =   360
    End
    Begin FPUSpreadADO.fpSpread MenuSpread 
-      Height          =   4005
-      Left            =   16200
+      Height          =   3285
+      Left            =   16080
       TabIndex        =   2
-      Top             =   360
-      Width           =   6105
+      Top             =   240
+      Width           =   6225
       _Version        =   458752
-      _ExtentX        =   10769
-      _ExtentY        =   7064
+      _ExtentX        =   10980
+      _ExtentY        =   5794
       _StockProps     =   64
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "맑은 고딕"
@@ -96,7 +96,7 @@ Begin VB.Form form1
    Begin VB.Image Image1 
       Height          =   10500
       Left            =   0
-      Picture         =   "form1.frx":0C63
+      Picture         =   "form1.frx":0C91
       Top             =   0
       Width           =   22500
    End
@@ -111,6 +111,8 @@ Option Explicit
 Private Sub Form_Load() '--Form_Load
     Timer1.Enabled = True   '--타이머 실행
     Timer1.Interval = 1000
+    
+    MenuSpread.Lock = True  '--메뉴 클릭 Spread 셀 수정금지
 End Sub
 
 Private Sub Form_Unload(cancel As Integer)
@@ -127,6 +129,8 @@ Private Sub MenuSpread_Click(ByVal Col As Long, ByVal Row As Long)
             regist.Show
         Case 2  '--학급일정 및 시간표 메뉴
             Classtime.Show
+        Case 3
+            ShowAvgFrm.Show '--학생별 성적 석차/평균 확인 메뉴
     End Select
 End Sub
 

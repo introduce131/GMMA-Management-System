@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin VB.Form Login 
    BackColor       =   &H00FFFFFF&
-   Caption         =   "GMS : 로그인"
+   Caption         =   "GMS : [로그인]"
    ClientHeight    =   9840
    ClientLeft      =   225
    ClientTop       =   570
@@ -23,7 +23,7 @@ Begin VB.Form Login
    StartUpPosition =   2  '화면 가운데
    Begin VB.CommandButton cmd_account 
       BackColor       =   &H00FFFFFF&
-      Caption         =   "회원가입"
+      Caption         =   "Sign in"
       BeginProperty Font 
          Name            =   "맑은 고딕"
          Size            =   9.75
@@ -38,7 +38,7 @@ Begin VB.Form Login
       Style           =   1  '그래픽
       TabIndex        =   6
       Top             =   9240
-      Width           =   1335
+      Width           =   1215
    End
    Begin VB.CommandButton Command1 
       BackColor       =   &H00FFFFFF&
@@ -205,21 +205,23 @@ Private Sub Command1_Click()    '--Login버튼 클릭시의 이벤트
 
     myRectSet.Open sqlStr, myconnobj    'lstConStr, adOpenStatic, adLockReadOnly
     
-     'If myRectSet.RecordCount <> 0 Then
-     
-            '==데이터베이스에서 값을 불러와서 로그인을 한다==
-                strID = myRectSet.Fields(0)             'ID를 가져와서 StrID 변수에 넣는다.
-                strPWD = myRectSet.Fields(1).Value      'PASSWORD를 가져와서 StrID 변수에 넣는다.
-                user = myRectSet.Fields(2).Value        '사용자이름을 user 변수에 넣는다.
-                form1.NameLabel = "Have a Good Day! " & "" & user
-                If id = strID And pwd = strPWD Then
-                    MsgBox user + "" + "님 로그인 성공", vbOKOnly, "로그인 성공"
-                    form1.Show
-                    Me.Hide
-                End If
-                myRectSet.MoveNext      '--다음 Row로 넘어감
-        'End If
-        myconnobj.Close
+    strID = myRectSet.Fields(0)             'ID를 가져와서 StrID 변수에 넣는다.
+    strPWD = myRectSet.Fields(1).Value      'PASSWORD를 가져와서 StrID 변수에 넣는다.
+    user = myRectSet.Fields(2).Value        '사용자이름을 user 변수에 넣는다.
+                
+    NM_USER = user
+                
+    form1.NameLabel = "Have a Good Day! " & "" & user
+                
+    If id = strID And pwd = strPWD Then
+        MsgBox user + "" + "님 로그인 성공", vbOKOnly, "로그인 성공"
+        form1.Show
+        Me.Hide
+    End If
+    
+    myRectSet.MoveNext      '--다음 Row로 넘어감
+    myconnobj.Close
+    
 LoginErrHandler:
     '--아이디, 비밀번호 일치 여부 LoginError
     If id <> strID Or pwd <> strPWD Or Text1.Text = "" Or Text2.Text = "" Then
@@ -229,6 +231,15 @@ End Sub
 
 Private Sub return_KeyPress(KeyAscii As Integer)
     Call Command1_Click
+End Sub
+
+Private Sub Form_Load()
+'==================================='
+'   관리자로 자동로그인하는 코드    '
+'==================================='
+'    text1.Text = "introduce131"
+'    Text2.Text = "qorwhddnjs23"
+'    Call Command1_Click
 End Sub
 
 Private Sub Form_Unload(cancel As Integer)
